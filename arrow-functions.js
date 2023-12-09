@@ -1,42 +1,24 @@
 /**
  * To run this file in Gitpod, use the 
- * command node arrow-functions.js in the terminal
+ * command node rest-parameter-syntax.js in the terminal
  */
 
-// Vanilla JavaScript Function
-// function addTwoNumbers(a, b) {
-//     // Code block
-//     return a + b;
-// }
+// Regular function call
+const sumAll = (a, b, c) => a + b + c;
+let sum = sumAll(1, 2, 3);
+console.log("Sum:", sum);
 
-// let sum = addTwoNumbers(3, 5);
-// console.log(sum);
+// Extra arguments are ignored
+let sum2 = sumAll(1, 2, 3, 4, 5, 6);
+console.log("Sum2:", sum2);
 
-// Arrow Function With Parameters
-// const addTwoNumbers = (a, b) => {
-//     // Code block
-//     return a + b;
-// }
-
-// let sum = addTwoNumbers(3, 5);
-// console.log(sum);
-
-// // Single Line Arrow Function With Parameters
-// const addTwoNumbers2 = (a, b) => (a + b);
-// let sum2 = addTwoNumbers2(4, 5);
-// console.log(sum2);
-
-// Implicit Returns
-// const saySomething = message => console.log(message);
-// saySomething("Hello there!");
-
-// const sayHello = () => console.log("hello");
-
-// Returning Multiple Lines
-const returnMultipleLines = () => (
-    `<p>
-        This is a multiline string!
-    </p>`
-);
-
-console.log(returnMultipleLines());
+// Function using ...rest
+const sumRest = (a, b, c, ...rest) => {
+    let sum = a + b + c;
+    for (let i of rest) {
+        sum += i;
+    }
+    return sum;
+}
+let sum3 = sumRest(1, 2, 3, 4, 5, 6);
+console.log("Sum3:", sum3);
